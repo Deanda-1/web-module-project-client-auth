@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import { rest } from 'msw'
 import Data from './data'
 import credentials from './credentials';

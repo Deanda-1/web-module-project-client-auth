@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const credentials = {
     username: "Bloom",
     password: "Tech",

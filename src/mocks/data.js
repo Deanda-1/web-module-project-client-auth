@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const nanoid = (n) => {
   const chars = 'abcdefghijklmnopqrstuvwxyz'
   let result = ''
