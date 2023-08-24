@@ -1,18 +1,43 @@
-import React from 'react';
-
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Login = () => {
+    const { push } = useHistory();
+    const [cred, setCred] = useState({
+        username: "",
+        password: ""
+    });
+
+    const handleChange = (e) => {
+        setCred({
+            ...cred,
+            [e.target.name]:e.target.value 
+        })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:5000/api/login', cred)
+        .then(resp => {
+           localStorage.setItem("token", resp.payload);
+           push('/friends');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
     return (<div>
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
         <label htmlFor="username">Username:</label>
-        <input  id="username" />
+        <input onChange={handleChange} name="username"  id="username" />
         </div>
         <div>
         <label htmlFor="password">Password:</label>
-        <input type="password" id="password" />
+        <input onChange={handleChange} name="password" type="password" id="password" />
         </div>
         <button>Submit</button> 
       </form>
