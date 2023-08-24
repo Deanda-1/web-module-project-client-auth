@@ -4,13 +4,9 @@ import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
 
 
-
-
-
-
 const Logout = () => {
-    const { push } = useHistory();
     useEffect(() => {
+        const { push } = useHistory();
         const token = localStorage.getItem("token");
         Axios.post('http://lodalhost:5000/api/logout', {}, {
             headers: {
